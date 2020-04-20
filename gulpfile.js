@@ -21,7 +21,7 @@ var gulp          = require('gulp'),
 gulp.task('browser-sync', function() {
 	browserSync({
 		server: {
-			baseDir: 'app'
+			baseDir: 'docs'
 		},
 		notify: false,
 		// open: false,
@@ -32,57 +32,57 @@ gulp.task('browser-sync', function() {
 
 // Sass|Scss Styles
 gulp.task('styles', function() {
-	return gulp.src('app/'+syntax+'/**/*.'+syntax+'')
+	return gulp.src('docs/'+syntax+'/**/*.'+syntax+'')
 	.pipe(sass({ outputStyle: 'expanded' }).on("error", notify.onError()))
 	.pipe(rename({ suffix: '.min', prefix : '' }))
 	.pipe(autoprefixer(['last 15 versions']))
 	.pipe(cleancss( {level: { 1: { specialComments: 0 } } })) // Opt., comment out when debugging
-	.pipe(gulp.dest('app/css'))
+	.pipe(gulp.dest('docs/css'))
 	.pipe(browserSync.stream())
 });
 
 // JS
 gulp.task('scripts', function() {
 	return gulp.src([
-		'app/libs/jquery/dist/jquery.min.js',
-		'app/js/common.js', // Always at the end
+		'docs/libs/jquery/dist/jquery.min.js',
+		'docs/js/common.js', // Always at the end
 		])
 	.pipe(concat('scripts.min.js'))
 	// .pipe(uglify()) // Mifify js (opt.)
-	.pipe(gulp.dest('app/js'))
+	.pipe(gulp.dest('docs/js'))
 	.pipe(browserSync.reload({ stream: true }))
 });
 
 // Images @x1 & @x2 + Compression | Required graphicsmagick (sudo apt update; sudo apt install graphicsmagick)
 gulp.task('img1x', function() {
-	return gulp.src('app/img/_src/**/*.*')
+	return gulp.src('docs/img/_src/**/*.*')
 	.pipe(imageResize({ width: '50%' }))
 	.pipe(imagemin())
-	.pipe(gulp.dest('app/img/@1x/'))
+	.pipe(gulp.dest('docs/img/@1x/'))
 });
 gulp.task('img2x', function() {
-	return gulp.src('app/img/_src/**/*.*')
+	return gulp.src('docs/img/_src/**/*.*')
 	.pipe(imageResize({ width: '100%' }))
 	.pipe(imagemin())
-	.pipe(gulp.dest('app/img/@2x/'))
+	.pipe(gulp.dest('docs/img/@2x/'))
 });
 
 // Clean @*x IMG's
 gulp.task('cleanimg', function() {
-	return del(['app/img/@*'], { force:true })
+	return del(['docs/img/@*'], { force:true })
 });
 
 // HTML Live Reload
 gulp.task('code', function() {
-	return gulp.src('app/*.html')
+	return gulp.src('docs/*.html')
 	.pipe(browserSync.reload({ stream: true }))
 });
 
 // Deploy
 gulp.task('rsync', function() {
-	return gulp.src('app/**')
+	return gulp.src('docs/**')
 	.pipe(rsync({
-		root: 'app/',
+		root: 'docs/',
 		hostname: 'username@yousite.com',
 		destination: 'yousite/public_html/',
 		// include: ['*.htaccess'], // Includes files to deploy
@@ -104,10 +104,10 @@ if (gulpVersion == 3) {
 	gmWatch && taskArr.unshift('img');
 
 	gulp.task('watch', taskArr, function() {
-		gulp.watch('app/'+syntax+'/**/*.'+syntax+'', ['styles']);
-		gulp.watch(['libs/**/*.js', 'app/js/common.js'], ['scripts']);
-		gulp.watch('app/*.html', ['code']);
-		gmWatch && gulp.watch('app/img/_src/**/*', ['img']);
+		gulp.watch('docs/'+syntax+'/**/*.'+syntax+'', ['styles']);
+		gulp.watch(['libs/**/*.js', 'docs/js/common.js'], ['scripts']);
+		gulp.watch('docs/*.html', ['code']);
+		gmWatch && gulp.watch('docs/img/_src/**/*', ['img']);
 	});
 	gulp.task('default', ['watch']);
 
@@ -120,10 +120,10 @@ if (gulpVersion == 4) {
 	gulp.task('img', gulp.parallel('img1x', 'img2x'));
 
 	gulp.task('watch', function() {
-		gulp.watch('app/'+syntax+'/**/*.'+syntax+'', gulp.parallel('styles'));
-		gulp.watch(['libs/**/*.js', 'app/js/common.js'], gulp.parallel('scripts'));
-		gulp.watch('app/*.html', gulp.parallel('code'));
-		gmWatch && gulp.watch('app/img/_src/**/*', gulp.parallel('img')); // GraphicsMagick watching image sources if allowed.
+		gulp.watch('docs/'+syntax+'/**/*.'+syntax+'', gulp.parallel('styles'));
+		gulp.watch(['libs/**/*.js', 'docs/js/common.js'], gulp.parallel('scripts'));
+		gulp.watch('docs/*.html', gulp.parallel('code'));
+		gmWatch && gulp.watch('docs/img/_src/**/*', gulp.parallel('img')); // GraphicsMagick watching image sources if allowed.
 	});
 	gmWatch ? gulp.task('default', gulp.parallel('img', 'styles', 'scripts', 'browser-sync', 'watch')) 
 					: gulp.task('default', gulp.parallel('styles', 'scripts', 'browser-sync', 'watch'));
