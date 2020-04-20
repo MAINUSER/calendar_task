@@ -38,6 +38,13 @@ body
 b, strong
 	font-weight: bold
 
+
+#check
+	display: none
+
+label #btn, label #cancel
+	position: absolute	
+
 .tasks
 	display: grid
 	grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr
@@ -47,14 +54,17 @@ b, strong
 .days
 	display: grid
 	grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr
-	background: gold
+	background: #f6fee6
 
 .days > div
-		border: 1px solid
-		text-align: center
-  height: 10vh
-  font-size: 1rem
-  line-height: 8vh
+	text-align: center
+	height: 10vh
+	font-size: 1rem
+	line-height: 10vh
+	border-bottom: 1px solid #d7d7d7
+	border-right: 1px solid #d7d7d7
+	text-transform: uppercase
+
 
 .datas
   display: grid
@@ -62,14 +72,19 @@ b, strong
 
 
 .datas > div, .hours > div
-  background: gold
+  background: #ebebeb
   text-align: center
-  border: 1px solid
+  border-bottom: 1px solid #d7d7d7
+  border-right: 1px solid #d7d7d7
   height: 10vh
   font-size: 1rem
 
 .first > div
-
+	background-color: #fff
 	max-width: 6.66vw
 	font-size: 1rem
+
+.day_working_today
+	background-color: #3f9606	
+	color: #fff
 @import "media" // Always at the end
