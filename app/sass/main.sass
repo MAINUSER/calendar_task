@@ -1,0 +1,67 @@
+@import "vars"
+@import "fonts"
+@import "libs"
+
+::placeholder
+	color: #666
+
+::selection
+	background-color: $accent
+	color: #fff
+
+body
+	font-size: 16px
+	min-width: 320px
+	position: relative
+	line-height: 1.65
+	font-family: $default-font
+	overflow-x: hidden
+	color: $text
+	input, textarea
+		border: #666 1px solid
+		outline: none
+		&:focus:required:invalid
+			border-color: red
+		&:required:valid
+			border-color: green
+
+.img-responsive
+	display: block
+	max-width: 100%
+	height: auto
+	&.img-width
+		width: 100%
+
+.text-center
+	text-align: center
+
+b, strong
+	font-weight: bold
+
+.tasks
+	display: grid
+	grid-template-columns: 1fr 10fr
+
+
+.days
+	display: grid
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr
+	background: gold
+	font-size: 5vw
+
+.days > div
+		border: 1px solid
+		padding: 5px
+		text-align: center
+
+#datas
+  display: grid
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr
+
+#datas > div, #hours > div
+  font-size: 5vw
+  padding: .5em
+  background: gold
+  text-align: center
+		border: 1px solid
+@import "media" // Always at the end
