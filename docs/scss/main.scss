@@ -50,4 +50,150 @@ b, strong {
 
 
 
+#check {
+	display: none;
+	position: absolute;
+}
+
+#check:checked ~ ul {
+		left: 0;
+}
+
+#check:checked ~ label .butn::before {
+	transform: translateZ(0) translateX(0px) translateY(6px) rotate(45deg);
+	transition: 0.2s;
+}
+
+#check:checked ~ label .butn::after {
+	transform: translateZ(0) translateX(0px) translateY(-6px) rotate(-45deg);
+	transition: 0.2s;
+}
+#check:checked ~ label .butn {
+	background: rgba(255, 255, 255, 0);
+	transition: 0.2s;
+}
+
+.navbar label {
+	position: relative;
+	left: 15px;
+	height: 100%;
+	width: 50px;
+	display: block;
+	padding-left: 13px;
+	margin-bottom: 0px;
+}
+.butn, .butn::before, .butn::after {
+	position: absolute;
+	top: 50%;
+    display: inline-block;
+    height: 3px;
+    width: 24px;
+    background-color: rgb(255, 255, 255);
+}	
+.butn::before {
+	content: '';
+	top: -6px;
+}
+
+.butn::after {
+	content: '';	
+	top: 6px;
+}
+
+
+label #cancel {
+	display: none;
+}
+label #btn, label #cancel {
+	display: none;
+	position: absolute;
+	top: 0px;
+	right: 20px;
+	color: #fff	;
+	background-color: #000000;
+	border-radius: 3px;
+	font-size: 35px;
+	padding: 6px 12px;
+}
+.sticky-top {
+    position: sticky;
+    top: 0px;
+    z-index: 1020;
+}
+.navbar {
+	position: relative;
+	top: 0px;
+	left: 0px;
+	height: 50px;
+	width: 100%;
+	background-color: #7b04b7;
+}
+.navbar ul {
+	position: absolute;
+	top: 50px;
+	left: -100vw;
+	width: 100%;
+	height: 100vh;
+	background-color: #333;
+	margin: 0px;
+	padding: 0px;
+	display: block;
+	text-align: center;
+	transition: 0.5s;
+}
+.navbar ul li {
+	list-style: none;
+}
+.navbar ul li a {
+	color: #fff;
+}
+
+
+
+
+.tasks {
+	display: grid;
+	grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+
+.days {
+	display: grid;
+	grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	background: #f6fee6;
+}
+.days > div {
+	text-align: center;
+	height: 10vh;
+	font-size: 1rem;
+	line-height: 10vh;
+	border-bottom: 1px solid #d7d7d7;
+	border-right: 1px solid #d7d7d7;
+	text-transform: uppercase;
+}
+
+.datas {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.datas > div, .hours > div {
+  background: #ebebeb;
+  text-align: center;
+  border-bottom: 1px solid #d7d7d7;
+  border-right: 1px solid #d7d7d7;
+  height: 10vh;
+  font-size: 1rem;
+}
+
+.first > div {
+	background-color: #fff;
+	max-width: 6.66vw;
+	font-size: 1rem;
+}
+
+.day_working_today {
+	background-color: #3f9606;
+	color: #fff;
+}
 @import "media"; // Always at the end

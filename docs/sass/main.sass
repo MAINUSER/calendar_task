@@ -42,9 +42,67 @@ b, strong
 #check
 	display: none
 
+#check:checked ~ ul
+	left: 0
+
+.butn
+    display: inline-block
+    height: 3px
+    width: 24px
+    background-color: #000
+	
+.butn::before 
+	content: ''
+    top: -6px
+
+label #cancel
+	display: none
+
 label #btn, label #cancel
+	display: none
 	position: absolute
+	top: 0px
+	right: 20px
 	color: #fff	
+	background-color: #000000
+	border-radius: 3px
+	font-size: 35px
+	padding: 6px 12px
+
+.sticky-top 
+    position: sticky
+    top: 0px
+    z-index: 1020
+
+.navbar
+	position: relative
+	top: 0px
+	left: 0px
+	height: 50px
+	width: 100%
+
+.navbar ul 
+	position: absolute
+	top: 50px
+	left: -100vw
+	width: 100%
+	height: 100vh
+	background-color: #333
+	margin: 0px
+	padding: 0px
+	display: block
+	text-align: center
+	transition: 0.5s
+
+.navbar ul li
+	list-style: none
+
+.navbar ul li a
+	color: #fff
+
+
+
+
 
 .tasks
 	display: grid
