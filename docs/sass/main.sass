@@ -43,27 +43,33 @@ b, strong
 	grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr
 
 
+
 .days
 	display: grid
 	grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr
 	background: gold
-	font-size: 5vw
 
 .days > div
 		border: 1px solid
 		text-align: center
-  min-height: 5vh
-  font-size: 10px
+  height: 10vh
+  font-size: 1rem
+  line-height: 8vh
 
 .datas
   display: grid
   grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr
 
+
 .datas > div, .hours > div
   background: gold
   text-align: center
   border: 1px solid
-  min-height: 5vh
-  font-size: 5px
+  height: 10vh
+  font-size: 1rem
 
+.first > div
+
+	max-width: 6.66vw
+	font-size: 1rem
 @import "media" // Always at the end
