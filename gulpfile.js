@@ -44,7 +44,7 @@ gulp.task('styles', function() {
 // JS
 gulp.task('scripts', function() {
 	return gulp.src([
-		'docs/libs/jquery/dist/jquery.min.js',
+		'node_modules/vue/dist/vue.min.js',
 		'docs/js/common.js', // Always at the end
 		])
 	.pipe(concat('scripts.min.js'))
